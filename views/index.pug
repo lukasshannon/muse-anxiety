@@ -3,27 +3,7 @@ block content
   div#gradient
     h1 Anxiety Tracker
     p Please put on your Muse headset
-    div#container.o--start
+    div#container
       a#circle.o__start(href="#")
     p(style="margin-top: 250px;") Just relax, and listen for the high pitched beep&nbsp
       i.fa.fa-smile-o
-
-  script.
-    $(function(){
-
-      $("#container").on("mouseenter", function(){
-        $("#circle").addClass("hover");
-      }).on("mouseleave", function() {
-        $("#circle").removeClass("hover");
-      });
-
-      $("#container.o--start").on("click", function() {
-        $("#circle").removeClass("o__start").addClass("o__face o__face--smile");
-        $("#container").removeClass("o--start").addClass("o--face");
-      });
-
-      $("#container.o--face").on("click", function() {
-        $("#circle").toggleClass("o__face--smile");
-      });
-
-    })

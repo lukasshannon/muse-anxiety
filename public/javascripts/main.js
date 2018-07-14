@@ -1,5 +1,27 @@
 $(function() { //jQuery Start
 
+  // ---- BEGIN: ACTION CIRCLE ---- //
+
+  $("#container").addClass("o--start");
+  $("#circle").addClass("o__start");
+
+  $("#container").on("mouseenter", function(){
+    $("#circle").addClass("hover");
+  }).on("mouseleave", function() {
+    $("#circle").removeClass("hover");
+  });
+
+  $("#container").on("click", function() {
+    if($("#container").hasClass("o--face")){
+      $("#circle").toggleClass("o__face--smile").toggleClass("o__face--frown");
+    }
+    if($("#container").hasClass("o--start")){
+      $("#circle").removeClass("o__start").addClass("o__face o__face--smile");
+      $("#container").removeClass("o--start").addClass("o--face");
+    }
+  });
+  // ---- END: ACTION CIRCLE ---- //
+
   // ---- BEGIN: GRADIENT BACKGROUND ---//
 
   var colors = new Array(
