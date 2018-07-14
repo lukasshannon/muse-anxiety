@@ -74,6 +74,7 @@ def lsl(q):
         stim= "+"
         index_channel = [0,1,2,3]
         ch_names = ['ch1','ch2','ch3','ch4']
+        stampval=[0]
         #if not q.empty():
         #   power,stim =q.get()
 
@@ -83,9 +84,11 @@ def lsl(q):
                 timeout=1, max_samples=int(shift_length * fs))
             #sample,timestamp = inlet.pull_sample()
                 ch_data = np.array(eeg_data)[:, index_channel]
-                data=[timestamp,ch_data]
+                time_data = timestamp[0]
+                data=[time_data,ch_data,stim]
                 writer.writerow(data)
-                
+
+
             else:
                 power,stim=q.get()
 
@@ -128,7 +131,7 @@ if __name__ == "__main__":
         ind = trials['sound_ind'].iloc[ii]
         auds[ind].play()
         print("ind",ind)
-        q.put(1,str(ind))
+        q.put([1,ind])
         # Send marker
         #timestamp = time()
         #outlet.push_sample([markernames[ind]], timestamp)
