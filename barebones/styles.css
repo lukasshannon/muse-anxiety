@@ -1,0 +1,235 @@
+body {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: black;
+}
+
+a {
+  color: #00B7FF;
+}
+
+a:active, a:focus {
+  outline: 0;
+  -moz-outline-style: none;
+}
+
+
+
+#gradient {
+  width: 100%;
+  height: 800px;
+  padding: 0px;
+  margin: 0px;
+}
+
+
+
+#container {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.o__start {
+  position: relative;
+  width: 0px;
+  height: 0px;
+  top: 90px;
+  left: 7px;
+  margin: 0px;
+  padding: 0px;
+  border: 0;
+  color: #0f0f0f;
+  font-size: 1px;
+  background-color: currentColor;
+  mix-blend-mode: hard-light;
+  transition: ease-out 0.1s;
+}
+
+.o__start::after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  border-top: 60px solid transparent;
+  border-bottom: 60px solid transparent;
+  border-left: 100px solid currentColor;
+}
+
+.o__collect {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin-bottom: 100px;
+  border: 0;
+  border-radius: 100%;
+  color: #0f0f0f;
+  background-color: currentColor;
+  box-shadow:
+    0px 100px 0px 70px currentColor;
+  mix-blend-mode: hard-light;
+  transition: ease-out 0.1s;
+}
+
+.o__collect::before {
+  content: "";
+  width: 1px;
+  height: 1px;
+  box-shadow:
+    0px 5px 0px 10px currentColor,
+    0px 205px 0px 10px currentColor,
+    0px 5px 0px 5px currentColor,
+    0px 5px 0px 5px currentColor;
+  z-index: 2;
+}
+
+.o__collect.hover {
+  box-shadow:
+    0px 100px 0px 100px currentColor;
+}
+
+.o__face {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+  border: 0;
+  border-radius: 100%;
+  color: #0f0f0f;
+  background-color: currentColor;
+  box-shadow:
+    0px 100px 0px 100px currentColor;
+  mix-blend-mode: hard-light;
+  transition: ease-out 0.1s;
+}
+
+.o__face.hover {
+  color: #161616;
+  box-shadow:
+    0px 100px 0px 100px currentColor;
+}
+
+.o__face:active {
+  color: #383838;
+  box-shadow:
+    0px 100px 0px 100px currentColor;
+}
+
+.o__face::before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 8px;
+  top: -20px;
+  left: -4px;
+  border-radius: 100%;
+  z-index: 4;
+  background-color: gray;
+  box-shadow: 
+    40px 80px 0px 10px gray,
+    -40px 80px 0px 10px gray;
+  transition: ease-out 0.1s;
+}
+
+.o__face.hover::before {
+  box-shadow: 
+    37px 78px 0px 10px gray,
+    -37px 78px 0px 10px gray;
+}
+
+.o__face--smile::after {
+  position: absolute;
+  content: "";
+  height: 80px;
+  width: 124px;
+  top: 50px;
+  left: -62px;
+  border-bottom: 50px solid gray;
+  border-radius: 100%;
+  z-index: 2;
+  background-color: currentColor;
+  transition: ease-out 0.1s;
+}
+
+.o__face--smile.hover::after {
+  position: absolute;
+  content: "";
+  height: 80px;
+  width: 150px;
+  top: 65px;
+  left: -75px;
+  border-bottom: 15px solid gray;
+  border-radius: 100%;
+  z-index: 2;
+  background-color: currentColor;
+}
+
+.o__face--frown::after {
+  position: absolute;
+  content: "";
+  height: 60px;
+  width: 140px;
+  top: 110px;
+  left: -70px;
+  border-top: 30px solid gray;
+  border-radius: 100%;
+  z-index: 2;
+  background-color: currentColor;
+  transition: ease-out 0.1s;
+}
+
+.o__face--frown.hover::after {
+  position: absolute;
+  content: "";
+  height: 40px;
+  width: 140px;
+  top: 120px;
+  left: -70px;
+  border-top: 20px solid gray;
+  border-radius: 100%;
+  z-index: 2;
+  background-color: currentColor;
+}
+
+
+
+/* Thanks to https://stackoverflow.com/questions/14859322/css3-spin-animation */
+.spin {
+  -webkit-animation-name: spin;
+     -moz-animation-name: spin;
+      -ms-animation-name: spin;
+  -webkit-animation-duration: 40000ms;
+     -moz-animation-duration: 40000ms;
+      -ms-animation-duration: 40000ms;
+  -webkit-animation-iteration-count: infinite;
+     -moz-animation-iteration-count: infinite;
+      -ms-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+     -moz-animation-timing-function: linear;
+      -ms-animation-timing-function: linear;
+  -o-transition: rotate(3600deg);
+}
+
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
