@@ -21,8 +21,44 @@ a:active, a:focus {
   padding: 0px;
   margin: 0px;
 }
+#container {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 100%;
+  cursor: pointer;
+}
 
-.face {
+.o__start {
+  position: relative;
+  width: 0px;
+  height: 0px;
+  top: 75px;
+  right: 0px;
+  margin: 0px;
+  padding: 0px;
+  border: 0;
+  color: #0f0f0f;
+  font-size: 1px;
+  background-color: currentColor;
+  mix-blend-mode: hard-light;
+  transition: ease-out 0.1s;
+}
+
+.o__start::after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  border-top: 60px solid transparent;
+  border-bottom: 60px solid transparent;
+  border-left: 100px solid currentColor;
+}
+
+.o__face {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -41,19 +77,19 @@ a:active, a:focus {
   transition: ease-out 0.1s;
 }
 
-.face:hover {
+.o__face.hover {
   color: #161616;
   box-shadow:
     0px 100px 0px 100px currentColor;
 }
 
-.face:active {
+.o__face:active {
   color: #383838;
   box-shadow:
     0px 100px 0px 100px currentColor;
 }
 
-.face::before {
+.o__face::before {
   position: absolute;
   content: "";
   height: 20px;
@@ -69,13 +105,13 @@ a:active, a:focus {
   transition: ease-out 0.1s;
 }
 
-.face:hover::before {
+.o__face.hover::before {
   box-shadow: 
     37px 78px 0px 10px gray,
     -37px 78px 0px 10px gray;
 }
 
-.face.face--smile::after {
+.o__face--smile::after {
   position: absolute;
   content: "";
   height: 80px;
@@ -89,7 +125,7 @@ a:active, a:focus {
   transition: ease-out 0.1s;
 }
 
-.face.face--smile:hover::after {
+.o__face--smile.hover::after {
   position: absolute;
   content: "";
   height: 80px;
@@ -102,7 +138,7 @@ a:active, a:focus {
   background-color: currentColor;
 }
 
-.face.face--frown::after {
+.o__face--frown::after {
   position: absolute;
   content: "";
   height: 60px;
@@ -116,7 +152,7 @@ a:active, a:focus {
   transition: ease-out 0.1s;
 }
 
-.face.face--frown:hover::after {
+.o__face--frown.hover::after {
   position: absolute;
   content: "";
   height: 40px;
