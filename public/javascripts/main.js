@@ -44,11 +44,14 @@ $(function() { //jQuery Start
     }, 1000);
   }
 
+  // Thanks to https://www.agiletrailblazers.com/blog/quick-start-to-generate-tones-in-javascript
+
   // ---- END: GENERATE TONES ---- //
 
   // ---- BEGIN: ACTION CIRCLE ---- //
 
   $("#graph").hide();
+  $("#plotdiv").hide();
   $("#container").addClass("o--start");
   $("#circle").addClass("o__start");
 
@@ -66,6 +69,7 @@ $(function() { //jQuery Start
       $("#circle").removeClass("o__collect").addClass("o__face o__face--smile");
       $("#container").removeClass("o--collect spin").addClass("o--face");
       $("#graph").show();
+      $("#plotdiv").show();
     }
     if($("#container").hasClass("o--start")){
       $("#circle").removeClass("o__start").addClass("o__collect");
@@ -146,18 +150,64 @@ $(function() { //jQuery Start
 
   // ---- BEGIN: CSV PLOT ---- //
 
-  var trace1 = {
-    x: [1, 2, 3, 4], 
-    y: [10, 15, 13, 17], 
-    type: 'scatter'
+  var d3 = Plotly.d3;
+
+  var WIDTH_IN_PERCENT_OF_PARENT = 100,
+      HEIGHT_IN_PERCENT_OF_PARENT = 100;
+
+  var gd3 = d3.select('body')
+      .append('div')
+      .style({
+          width: WIDTH_IN_PERCENT_OF_PARENT + '%',
+          'margin-left': (100 - WIDTH_IN_PERCENT_OF_PARENT) / 2 + '%',
+
+          height: HEIGHT_IN_PERCENT_OF_PARENT + 'vh',
+          'margin-top': (100 - HEIGHT_IN_PERCENT_OF_PARENT) / 2 + 'vh'
+      });
+
+  var gd = gd3.node();
+
+  Plotly.plot(gd, 
+    [
+      {
+        type: 'scatter',
+        name: 'Last Week',
+        x: [1, 2, 3, 4],
+        y: [5, 10, 2, 8]
+      },
+      {
+        type: 'scatter',
+        name: 'This Week',
+        x: [1, 2, 3, 4],
+        y: [16, 5, 11, 9],
+      }
+    ], 
+    {
+      title: 'Your Progress This Week',
+      font: {
+          size: 16
+      },
+
+    }
+  );
+
+  window.onresize = function() {
+      Plotly.Plots.resize(gd);
   };
-  var trace2 = {
-    x: [1, 2, 3, 4], 
-    y: [16, 5, 11, 9], 
-    type: 'scatter'
-  };
-  var data = [trace1, trace2];
-  Plotly.newPlot('plotdiv', data);
+
+  // ---- END: CSV PLOT ---- //
+
+  // ---- BEGIN: SCROLL TO BOTTOM ---- //
+
+  $("#bottomlink").on("click", function() {
+    $('html, body').animate({ 
+      scrollTop: $(document).height()-$(window).height()}, 
+      1400, 
+      "swing"
+    );
+  });
+
+  // ---- END: SCROLL TO BOTTOM ---- //  
 
 }); //jQuery End
 
