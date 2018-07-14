@@ -25,25 +25,6 @@ $(function() { //jQuery Start
     source.start(0);
   };
 
-  function playlow(){
-    playFrequency(300);
-    window.setTimeout(function() {
-      if(Math.floor(Math.random()*100)%13 == 0){
-        playhigh();
-      } else {
-        playlow();
-      }
-    }, 2000);
-  }
-
-  function playhigh(){
-    playFrequency(1200);
-    window.setTimeout(function() {
-      if($("#container").hasClass("o--face")) return;
-      playhigh()
-    }, 1000);
-  }
-
   // ---- END: GENERATE TONES ---- //
 
   // ---- BEGIN: ACTION CIRCLE ---- //
@@ -66,11 +47,11 @@ $(function() { //jQuery Start
       $("#circle").removeClass("o__collect").addClass("o__face o__face--smile");
       $("#container").removeClass("o--collect spin").addClass("o--face");
       $("#graph").show();
+      playFrequency(10);
     }
     if($("#container").hasClass("o--start")){
       $("#circle").removeClass("o__start").addClass("o__collect");
       $("#container").removeClass("o--start").addClass("o--collect spin");
-      playlow();
     }
   });
 
@@ -143,21 +124,6 @@ $(function() { //jQuery Start
   // And https://colorhunt.co/
 
   //---- END: GRADIENT BACKGROUND ----///
-
-  // ---- BEGIN: CSV PLOT ---- //
-
-  var trace1 = {
-    x: [1, 2, 3, 4], 
-    y: [10, 15, 13, 17], 
-    type: 'scatter'
-  };
-  var trace2 = {
-    x: [1, 2, 3, 4], 
-    y: [16, 5, 11, 9], 
-    type: 'scatter'
-  };
-  var data = [trace1, trace2];
-  Plotly.newPlot('plotdiv', data);
 
 }); //jQuery End
 
