@@ -72,21 +72,22 @@ def lsl(q):
         writer = csv.writer(f)
         power=1
         stim= "+"
+        index_channel = [0,1,2,3]
+        ch_names = ['ch1','ch2','ch3','ch4']
         #if not q.empty():
         #   power,stim =q.get()
 
         while power==1:
             if q.empty():
                 eeg_data, timestamp = inlet.pull_chunk(
-                        timeout=1, max_samples=int(shift_length * fs))
-                #sample,timestamp = inlet.pull_sample()
-                print (eeg_data)
-                print (timestamp)
-                data=[timestamp,eeg_data]
-                #data.extend(sample)
+                timeout=1, max_samples=int(shift_length * fs))
+            #sample,timestamp = inlet.pull_sample()
+                ch_data = np.array(eeg_data)[:, index_channel]
+                data=[timestamp,ch_data]
                 writer.writerow(data)
+                
             else:
-                power,stim =q.get()
+                power,stim=q.get()
 
 
 ###Code Below is all the  Main Loop #####
@@ -123,11 +124,11 @@ if __name__ == "__main__":
     for ii, trial in trials.iterrows():
         # Intertrial interval
         core.wait(iti + np.random.rand() * jitter)
-        q.put([1,"+"])
         # Select and play sound
         ind = trials['sound_ind'].iloc[ii]
         auds[ind].play()
-        q.put([1,ind])
+        print("ind",ind)
+        q.put(1,str(ind))
         # Send marker
         #timestamp = time()
         #outlet.push_sample([markernames[ind]], timestamp)
