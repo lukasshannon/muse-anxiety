@@ -48,7 +48,7 @@ usern = "Sydney"
 #####
 
 markernames = [1, 2]
-n_trials = 20
+n_trials = 200
 iti = 0.3
 soa = 0.2
 jitter = 0.2
