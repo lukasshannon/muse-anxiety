@@ -20,7 +20,6 @@ h1 {
   padding-top: 30px;
 }
 
-
 #gradient {
   width: 100%;
   height: 800px;
@@ -29,6 +28,20 @@ h1 {
 }
 
 
+#bottomlink {
+  font-size: 18px;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5%;
+  border: 1px solid #0f0f0f;
+  background-color: rgba(0,0,0,0.6);
+  transition: linear 0.15s;
+}
+
+#bottomlink:hover {
+  background-color: rgba(0,0,0,0.8);
+}
 
 #container {
   position: absolute;

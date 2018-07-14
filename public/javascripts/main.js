@@ -50,8 +50,7 @@ $(function() { //jQuery Start
 
   // ---- BEGIN: ACTION CIRCLE ---- //
 
-  $("#graph").hide();
-  $("#plotdiv").hide();
+  $("#bottomlink").hide();
   $("#container").addClass("o--start");
   $("#circle").addClass("o__start");
 
@@ -64,17 +63,22 @@ $(function() { //jQuery Start
   $("#container").on("click", function() {
     if($("#container").hasClass("o--face")){
       $("#circle").toggleClass("o__face--smile").toggleClass("o__face--frown");
+      if($("#circle").hasClass("o__face--smile")) $("#lowertext").text("Congratulations! Your anxiety response is within a normal range!");
+      if($("#circle").hasClass("o__face--frown")) $("#lowertext").text("Your anxiety levels are above a normal range today. Take care of yourself!");
     }
     if($("#container").hasClass("o--collect")){
       $("#circle").removeClass("o__collect").addClass("o__face o__face--smile");
       $("#container").removeClass("o--collect spin").addClass("o--face");
-      $("#graph").show();
-      $("#plotdiv").show();
+      $("#bottomlink").show();
+      $("#uppertext").text("Your results for today:");
+      $("#lowertext").text("Congratulations! Your anxiety response is within a normal range!");
     }
     if($("#container").hasClass("o--start")){
       $("#circle").removeClass("o__start").addClass("o__collect");
       $("#container").removeClass("o--start").addClass("o--collect spin");
       playlow();
+      $("#uppertext").text("Keep very still and breathe deeply");
+      $("#lowertext").text("Click the action circle when you hear the high pitch tone");
     }
   });
 
@@ -150,6 +154,13 @@ $(function() { //jQuery Start
 
   // ---- BEGIN: CSV PLOT ---- //
 
+  var data1 = {x: [1, 2, 3, 4],
+              y: [5, 10, 2, 8]};
+  var data2 = {x: [1, 2, 3, 4],
+              y: [16, 5, 11, 9]};
+
+
+
   var d3 = Plotly.d3;
 
   var WIDTH_IN_PERCENT_OF_PARENT = 100,
@@ -172,14 +183,15 @@ $(function() { //jQuery Start
       {
         type: 'scatter',
         name: 'Last Week',
-        x: [1, 2, 3, 4],
-        y: [5, 10, 2, 8]
+        x: data1.x,
+        y: data1.y
+
       },
       {
         type: 'scatter',
         name: 'This Week',
-        x: [1, 2, 3, 4],
-        y: [16, 5, 11, 9],
+        x: data2.x,
+        y: data2.y
       }
     ], 
     {

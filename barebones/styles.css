@@ -15,6 +15,10 @@ a:active, a:focus {
   -moz-outline-style: none;
 }
 
+h1 {
+  margin-top: 0px;
+  padding-top: 30px;
+}
 
 
 #gradient {
