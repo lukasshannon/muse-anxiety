@@ -35,7 +35,7 @@ h1 {
   padding: 10px;
   border-radius: 5%;
   border: 1px solid #0f0f0f;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0,0,0,1);
   transition: linear 0.15s;
 }
 
