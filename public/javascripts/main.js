@@ -15,9 +15,13 @@ $(function() { //jQuery Start
     if($("#container").hasClass("o--face")){
       $("#circle").toggleClass("o__face--smile").toggleClass("o__face--frown");
     }
+    if($("#container").hasClass("o--collect")){
+      $("#circle").removeClass("o__collect").addClass("o__face o__face--smile");
+      $("#container").removeClass("o--collect spin").addClass("o--face");
+    }
     if($("#container").hasClass("o--start")){
-      $("#circle").removeClass("o__start").addClass("o__face o__face--smile");
-      $("#container").removeClass("o--start").addClass("o--face");
+      $("#circle").removeClass("o__start").addClass("o__collect");
+      $("#container").removeClass("o--start").addClass("o--collect spin");
     }
   });
   // ---- END: ACTION CIRCLE ---- //
